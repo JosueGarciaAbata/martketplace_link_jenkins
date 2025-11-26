@@ -2,7 +2,7 @@ services:
   jenkins:
     build:
       context: .
-      dockerfile: dockerfile-jenkins-local-deploy.yml
+      dockerfile: Dockerfile-jenkins-local-deploy.yml
     container_name: jenkins-master
     restart: unless-stopped
     user: root

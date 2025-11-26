@@ -2,34 +2,39 @@ pipeline {
     agent any
 
     environment {
-        // Nombre de la imagen del backend
+
+        // Imagen Docker del backend
         DOCKER_IMAGE = "dockerfile-marketplace"
 
-        // Nombre del contenedor donde correrá tu app
+        // Contenedor donde correrá la aplicación
         CONTAINER_NAME = "marketplace_backend"
 
-        // Red Docker donde está tu base
+        // Red Docker donde está la base de datos
         DOCKER_NETWORK = "mplink_net"
 
-        // Variables de entorno del backend (Spring Boot)
+        // SPRING BOOT
+        SPRING_PROFILES_ACTIVE = "prod"
         SERVER_PORT = "8090"
         FRONTEND_URL = "http://localhost:5174"
+        SUSPENDED_TIME_DAYS = "3"
 
-        SPRING_PROFILES_ACTIVE = "prod"
-
+        // BASE DE DATOS PRINCIPAL
         DB_HOST = "mplink_marketplace_db"
         DB_PORT = "5432"
         DB_NAME = "marketplace_db"
-        DB_USER = "marketplace"
+        DB_USER = "postgres"
         DB_PASSWORD = "admin"
 
+        // CORREO
         MAIL_HOST = "smtp.gmail.com"
         MAIL_PORT = "587"
         MAIL_USERNAME = "deividjosue52@gmail.com"
         MAIL_PASSWORD = "brofrrjvuyvhqcfe"
 
+        // MODERADOR
         MODERATOR_DEFAULT_PASSWORD = "SecretPasswordM123"
 
+        // AZURE STORAGE
         AZURE_STORAGE_ENABLED = "false"
         AZURE_STORAGE_CONNECTION_STRING = ""
         AZURE_STORAGE_CONTAINER_NAME = "imagenes"
@@ -52,35 +57,36 @@ pipeline {
         }
 
         stage('Deploy Backend Container') {
-            steps {
-                echo "Eliminando contenedor anterior si existe..."
-                sh "docker rm -f ${CONTAINER_NAME} || true"
+             steps {
+                        echo "Eliminando contenedor anterior si existe..."
+                        sh "docker rm -f ${CONTAINER_NAME} || true"
 
-                echo "Iniciando nuevo contenedor del backend..."
-                sh """
-                docker run -d \
-                  --name ${CONTAINER_NAME} \
-                  --network ${DOCKER_NETWORK} \
-                  -p 8080:8080 \
-                  -e SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE} \
-                  -e SERVER_PORT=${SERVER_PORT} \
-                  -e FRONTEND_URL=${FRONTEND_URL} \
-                  -e DB_HOST=${DB_HOST} \
-                  -e DB_PORT=${DB_PORT} \
-                  -e DB_NAME=${DB_NAME} \
-                  -e DB_USER=${DB_USER} \
-                  -e DB_PASSWORD=${DB_PASSWORD} \
-                  -e MAIL_HOST=${MAIL_HOST} \
-                  -e MAIL_PORT=${MAIL_PORT} \
-                  -e MAIL_USERNAME=${MAIL_USERNAME} \
-                  -e MAIL_PASSWORD=${MAIL_PASSWORD} \
-                  -e MODERATOR_DEFAULT_PASSWORD=${MODERATOR_DEFAULT_PASSWORD} \
-                  -e AZURE_STORAGE_ENABLED=${AZURE_STORAGE_ENABLED} \
-                  -e AZURE_STORAGE_CONNECTION_STRING="${AZURE_STORAGE_CONNECTION_STRING}" \
-                  -e AZURE_STORAGE_CONTAINER_NAME=${AZURE_STORAGE_CONTAINER_NAME} \
-                  ${DOCKER_IMAGE}
-                """
-            }
-        }
+                        echo "Iniciando nuevo contenedor del backend..."
+                        sh """
+                        docker run -d \
+                          --name ${CONTAINER_NAME} \
+                          --network ${DOCKER_NETWORK} \
+                          -p ${SERVER_PORT}:${SERVER_PORT} \
+                          -e SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE} \
+                          -e SERVER_PORT=${SERVER_PORT} \
+                          -e FRONTEND_URL=${FRONTEND_URL} \
+                          -e SUSPENDED_TIME_DAYS=${SUSPENDED_TIME_DAYS} \
+                          -e DB_HOST=${DB_HOST} \
+                          -e DB_PORT=${DB_PORT} \
+                          -e DB_NAME=${DB_NAME} \
+                          -e DB_USER=${DB_USER} \
+                          -e DB_PASSWORD=${DB_PASSWORD} \
+                          -e MAIL_HOST=${MAIL_HOST} \
+                          -e MAIL_PORT=${MAIL_PORT} \
+                          -e MAIL_USERNAME=${MAIL_USERNAME} \
+                          -e MAIL_PASSWORD=${MAIL_PASSWORD} \
+                          -e MODERATOR_DEFAULT_PASSWORD=${MODERATOR_DEFAULT_PASSWORD} \
+                          -e AZURE_STORAGE_ENABLED=${AZURE_STORAGE_ENABLED} \
+                          -e AZURE_STORAGE_CONNECTION_STRING="${AZURE_STORAGE_CONNECTION_STRING}" \
+                          -e AZURE_STORAGE_CONTAINER_NAME=${AZURE_STORAGE_CONTAINER_NAME} \
+                          ${DOCKER_IMAGE}
+                        """
+                    }
+                }
     }
 }
