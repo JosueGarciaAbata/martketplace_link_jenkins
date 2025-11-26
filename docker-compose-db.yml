@@ -1,7 +1,7 @@
 services:
   mplink_postgres:
     image: postgis/postgis:16-3.5
-    container_name: mplink_marketplace_db
+    container_name: marketplace_db
     restart: unless-stopped
     ports:
       - "${DB_PORT:-5436}:5432"
