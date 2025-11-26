@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Nombre de la imagen del backend
-        DOCKER_IMAGE = "dockerfile-marketplace"
+        DOCKER_IMAGE = "Dockerfile-marketplace"
 
         // Nombre del contenedor donde correrá tu app
         CONTAINER_NAME = "marketplace_backend"
