@@ -56,7 +56,10 @@ public class ProdSecurityConfig {
             "/*.jpeg",
             "/*.png",
             "/*.gif",
-            "/*.webp"
+            "/*.webp",
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/swagger-ui.html",
     };
 
     @Bean
