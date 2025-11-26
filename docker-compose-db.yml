@@ -21,6 +21,8 @@ services:
       - mplink_net
 volumes:
   mplink_pgdata:
+    name: mplink_pgdata
 networks:
   mplink_net:
+    name: mplink_net
     driver: bridge
