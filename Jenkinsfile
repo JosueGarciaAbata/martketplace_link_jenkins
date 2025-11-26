@@ -36,7 +36,7 @@ pipeline {
 
         // AZURE STORAGE
         AZURE_STORAGE_ENABLED = "false"
-        AZURE_STORAGE_CONNECTION_STRING = ""
+        AZURE_STORAGE_CONNECTION_STRING = "placeholder"
         AZURE_STORAGE_CONTAINER_NAME = "imagenes"
     }
 
