@@ -1,0 +1,17 @@
+FROM jenkins/jenkins:latest
+  
+# Cambiar a root para instalar paquetes
+USER root
+  
+# Actualizar repositorios e instalar Maven, Docker CLI, utilidades necesarias
+RUN apt-get update && \
+apt-get install -y \
+maven \
+docker.io \
+&& rm -rf /var/lib/apt/lists/*
+  
+# (Opcional) Añadir al grupo docker para permitir uso de docker por parte de Jenkins user
+RUN usermod -aG docker jenkins
+  
+# Volver al usuario Jenkins (mejor para seguridad)
+USER jenkins
