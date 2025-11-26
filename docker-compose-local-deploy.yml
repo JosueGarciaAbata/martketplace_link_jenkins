@@ -11,6 +11,7 @@ services:
       - "50000:50000" # puerto para agentes conectarse
     volumes:
       - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
 
 volumes:
   jenkins-data:
