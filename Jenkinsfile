@@ -19,7 +19,7 @@ pipeline {
         SUSPENDED_TIME_DAYS = "3"
 
         // BASE DE DATOS PRINCIPAL
-        DB_HOST = "mplink_marketplace_db"
+        DB_HOST = "marketplace_db"
         DB_PORT = "5432"
         DB_NAME = "marketplace_db"
         DB_USER = "postgres"
