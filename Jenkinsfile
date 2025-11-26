@@ -85,7 +85,7 @@ pipeline {
                           -e AZURE_STORAGE_ENABLED=${AZURE_STORAGE_ENABLED} \
                           -e AZURE_STORAGE_CONNECTION_STRING="${AZURE_STORAGE_CONNECTION_STRING}" \
                           -e AZURE_STORAGE_CONTAINER_NAME=${AZURE_STORAGE_CONTAINER_NAME} \
-                          ${DOCKER_IMAGE}
+                          ${DOCKER_IMAGE_TAG}
                         """
                     }
                 }
