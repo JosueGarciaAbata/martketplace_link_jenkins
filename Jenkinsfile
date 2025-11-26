@@ -37,12 +37,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/JosueGarciaAbata/marketplace_link_jenkins.git'
-            }
-        }
-
         stage('Build WAR') {
             steps {
                 echo "Compilando backend..."
