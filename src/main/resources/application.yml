@@ -3,25 +3,12 @@ spring:
     name: marketplace-link
 
   mail:
-    host: ${MAIL_HOST}
-    port: ${MAIL_PORT}
-    username: ${MAIL_USERNAME}
-    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
-
-  profiles:
-    active: prod
-
-  datasource:
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
-    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
@@ -41,15 +28,6 @@ spring:
       write-dates-as-timestamps: false
 
 server:
-  port: ${SERVER_PORT}
-
-  error:
-    include-message: always
-    include-binding-errors: always
-    include-stacktrace: never
-    whitelabel:
-      enabled: false
-
   servlet:
     encoding:
       charset: UTF-8
@@ -97,9 +75,6 @@ frontend:
 moderator:
   default-password: ${MODERATOR_DEFAULT_PASSWORD}
 
-# Azure Blob Storage Configuration
 azure:
   storage:
-    connection-string: ${AZURE_STORAGE_CONNECTION_STRING}
     container-name: ${AZURE_STORAGE_CONTAINER_NAME:imagenes}
-    enabled: ${AZURE_STORAGE_ENABLED:true}
