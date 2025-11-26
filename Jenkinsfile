@@ -69,11 +69,21 @@ pipeline {
                   --network ${DOCKER_NETWORK} \
                   -p 8080:8080 \
                   -e SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE} \
+                  -e SERVER_PORT=${SERVER_PORT} \
+                  -e FRONTEND_URL=${FRONTEND_URL} \
                   -e DB_HOST=${DB_HOST} \
                   -e DB_PORT=${DB_PORT} \
                   -e DB_NAME=${DB_NAME} \
                   -e DB_USER=${DB_USER} \
                   -e DB_PASSWORD=${DB_PASSWORD} \
+                  -e MAIL_HOST=${MAIL_HOST} \
+                  -e MAIL_PORT=${MAIL_PORT} \
+                  -e MAIL_USERNAME=${MAIL_USERNAME} \
+                  -e MAIL_PASSWORD=${MAIL_PASSWORD} \
+                  -e MODERATOR_DEFAULT_PASSWORD=${MODERATOR_DEFAULT_PASSWORD} \
+                  -e AZURE_STORAGE_ENABLED=${AZURE_STORAGE_ENABLED} \
+                  -e AZURE_STORAGE_CONNECTION_STRING="${AZURE_STORAGE_CONNECTION_STRING}" \
+                  -e AZURE_STORAGE_CONTAINER_NAME=${AZURE_STORAGE_CONTAINER_NAME} \
                   ${DOCKER_IMAGE}
                 """
             }
