@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Nombre de la imagen del backend
-        DOCKER_IMAGE = "Dockerfile-marketplace"
+        DOCKER_IMAGE = "dockerfile-marketplace"
 
         // Nombre del contenedor donde correrá tu app
         CONTAINER_NAME = "marketplace_backend"
@@ -47,7 +47,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo "Construyendo imagen Docker del backend..."
-                sh "docker build -t ${DOCKER_IMAGE} ."
+                sh "docker build -t ${DOCKER_IMAGE} -f Dockerfile-marketplace ."
             }
         }
 
