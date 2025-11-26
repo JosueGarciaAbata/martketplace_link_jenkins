@@ -31,7 +31,7 @@ pipeline {
         MODERATOR_DEFAULT_PASSWORD = "SecretPasswordM123"
 
         AZURE_STORAGE_ENABLED = "false"
-        AZURE_STORAGE_CONNECTION_STRING =
+        AZURE_STORAGE_CONNECTION_STRING = ""
         AZURE_STORAGE_CONTAINER_NAME = "imagenes"
     }
 
