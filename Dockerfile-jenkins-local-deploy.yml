@@ -8,10 +8,11 @@ RUN apt-get update && \
 apt-get install -y \
 maven \
 docker.io \
+sudo \
 && rm -rf /var/lib/apt/lists/*
   
-# (Opcional) Añadir al grupo docker para permitir uso de docker por parte de Jenkins user
 RUN usermod -aG docker jenkins
+RUN usermod -aG sudo jenkins
   
 # Volver al usuario Jenkins (mejor para seguridad)
 USER jenkins
