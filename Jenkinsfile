@@ -16,7 +16,7 @@ pipeline {
         // SPRING BOOT
         SPRING_PROFILES_ACTIVE = "prod"
         SERVER_PORT = "8090"
-        FRONTEND_URL = "http://localhost:5174"
+        FRONTEND_URL = "http://localhost:8080"
         SUSPENDED_TIME_DAYS = "3"
 
         // BASE DE DATOS PRINCIPAL
