@@ -15,7 +15,8 @@ pipeline {
 
         // SPRING BOOT
         SPRING_PROFILES_ACTIVE = "prod"
-        SERVER_PORT = "8080"
+        SERVER_PORT_HOST = "8090"
+        SERVER_PORT_CONT = "8080"
         FRONTEND_URL = "*"
         SUSPENDED_TIME_DAYS = "3"
 
@@ -67,7 +68,7 @@ pipeline {
                         docker run -d \
                           --name ${CONTAINER_NAME} \
                           --network ${DOCKER_NETWORK} \
-                          -p ${SERVER_PORT}:${SERVER_PORT} \
+                          -p ${SERVER_PORT_HOST}:${SERVER_PORT_CONT} \
                           -e SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE} \
                           -e SERVER_PORT=${SERVER_PORT} \
                           -e FRONTEND_URL=${FRONTEND_URL} \
