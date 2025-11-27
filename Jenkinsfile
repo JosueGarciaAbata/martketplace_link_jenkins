@@ -40,6 +40,9 @@ pipeline {
         AZURE_STORAGE_ENABLED = "false"
         AZURE_STORAGE_CONNECTION_STRING = "placeholder"
         AZURE_STORAGE_CONTAINER_NAME = "imagenes"
+
+        // WORKSPACE
+        WORKSPACE = "/var/jenkins_home/workspace/marketplace_pipeline"
     }
 
     stages {
@@ -69,6 +72,7 @@ pipeline {
                           --name ${CONTAINER_NAME} \
                           --network ${DOCKER_NETWORK} \
                           -p ${SERVER_PORT_HOST}:${SERVER_PORT_CONT} \
+                          -v ${WORKSPACE}/uploads:/app/uploads \
                           -e SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE} \
                           -e SERVER_PORT=${SERVER_PORT_CONT} \
                           -e FRONTEND_URL=${FRONTEND_URL} \
