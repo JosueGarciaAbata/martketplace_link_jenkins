@@ -94,7 +94,7 @@ pipeline {
                         """
 
                         echo "Copiando imagenes al contenedor..."
-                        sh "docker cp ${WORKSPACE}/uploads ${CONTAINER_NAME}:/app/uploads"
+                        sh "docker cp ${WORKSPACE}/uploads/** ${CONTAINER_NAME}:/app/uploads"
                     }
                 }
     }
