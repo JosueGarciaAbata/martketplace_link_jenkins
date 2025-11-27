@@ -68,6 +68,9 @@ pipeline {
 
                         echo "Iniciando nuevo contenedor del backend..."
                         sh """
+
+                        sudo chmod -R 777 /var/jenkins_home/workspace/marketplace_pipeline/uploads
+
                         docker run -d \
                           --name ${CONTAINER_NAME} \
                           --network ${DOCKER_NETWORK} \
