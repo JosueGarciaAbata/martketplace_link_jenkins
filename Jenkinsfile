@@ -42,7 +42,7 @@ pipeline {
         AZURE_STORAGE_CONTAINER_NAME = "imagenes"
 
         // WORKSPACE
-        // WORKSPACE = "/var/jenkins_home/workspace/marketplace_pipeline"
+        WORKSPACE = "/var/jenkins_home/workspace/marketplace_pipeline"
     }
 
     stages {
@@ -92,6 +92,9 @@ pipeline {
                           -e AZURE_STORAGE_CONTAINER_NAME=${AZURE_STORAGE_CONTAINER_NAME} \
                           ${DOCKER_IMAGE_TAG}
                         """
+
+                        echo "Copiando imagenes al contenedor..."
+                        sh "docker cp ${WORKSPACE}/uploads ${CONTAINER_NAME}:/app/uploads"
                     }
                 }
     }
