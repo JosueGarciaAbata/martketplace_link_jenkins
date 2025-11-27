@@ -15,7 +15,7 @@ pipeline {
 
         // SPRING BOOT
         SPRING_PROFILES_ACTIVE = "prod"
-        SERVER_PORT = "8090"
+        SERVER_PORT = "8080"
         FRONTEND_URL = "*"
         SUSPENDED_TIME_DAYS = "3"
 
