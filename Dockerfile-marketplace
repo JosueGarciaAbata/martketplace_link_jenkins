@@ -21,7 +21,10 @@ RUN addgroup -S spring && adduser -S spring -G spring
 
 WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar
-RUN mkdir -p /app/uploads && chown -R spring:spring /app
+
+# Copiamos las imágenes locales
+COPY uploads /app/uploads
+RUN chown -R spring:spring /app
 
 USER spring:spring
 
