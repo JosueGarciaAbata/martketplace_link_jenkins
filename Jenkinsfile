@@ -73,6 +73,7 @@ pipeline {
                           --name ${CONTAINER_NAME} \
                           --network ${DOCKER_NETWORK} \
                           -p ${SERVER_PORT_HOST}:${SERVER_PORT_CONT} \
+                          -v ${WORKSPACE}/uploads:/app/uploads \
                           -e SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE} \
                           -e SERVER_PORT=${SERVER_PORT_CONT} \
                           -e FRONTEND_URL=${FRONTEND_URL} \
@@ -92,9 +93,6 @@ pipeline {
                           -e AZURE_STORAGE_CONTAINER_NAME=${AZURE_STORAGE_CONTAINER_NAME} \
                           ${DOCKER_IMAGE_TAG}
                         """
-
-                        echo "Copiando imagenes al contenedor..."
-                        sh "docker cp ${WORKSPACE}/uploads/. ${CONTAINER_NAME}:/app/uploads"
                     }
                 }
     }
