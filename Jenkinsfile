@@ -70,7 +70,7 @@ pipeline {
                           --network ${DOCKER_NETWORK} \
                           -p ${SERVER_PORT_HOST}:${SERVER_PORT_CONT} \
                           -e SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE} \
-                          -e SERVER_PORT=${SERVER_PORT} \
+                          -e SERVER_PORT=${SERVER_PORT_CONT} \
                           -e FRONTEND_URL=${FRONTEND_URL} \
                           -e SUSPENDED_TIME_DAYS=${SUSPENDED_TIME_DAYS} \
                           -e DB_HOST=${DB_HOST} \
